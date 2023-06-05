@@ -57,6 +57,8 @@ export class NoteService {
   updateName: string = '';
   updateDate: Date = new Date();
   updatenote: string = '';
+  isActionDisabled: boolean = false;
+
 
   constructor() {}
 
@@ -72,6 +74,7 @@ export class NoteService {
   }
 
   deleteNote(note: Note): void {
+    this.isActionDisabled = true;
     note.backgroundColor = 'red'; // Change background color to red
   }
 
