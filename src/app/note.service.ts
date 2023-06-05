@@ -71,13 +71,8 @@ export class NoteService {
     this.notes.push(newNote);
   }
 
-  deleteNote(note: any): void {
-    if (confirm('Are you sure you want to delete this note?')) {
-      const index = this.notes.indexOf(note);
-      if (index > -1) {
-        this.notes.splice(index, 1);
-      }
-    }
+  deleteNote(note: Note): void {
+    note.backgroundColor = 'red'; // Change background color to red
   }
 
   updateNote(note: any): void {
