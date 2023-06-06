@@ -72,10 +72,20 @@
       >
         <a [routerLink]="note.id">{{ note.name }}</a>
         <div class="button-container">
-          <button mat-raised-button color="warn" (click)="deleteNote(note)" [disabled]="noteService.isActionDisabled">
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="deleteNote(note); disableButtonsForNote(note)"
+            [disabled]="isDeleteButtonDisabled(note)"
+          >
             Delete Note
           </button>
-          <button mat-raised-button color="accent" (click)="openDialog(note)" [disabled]="noteService.isActionDisabled">
+          <button
+            mat-raised-button
+            color="accent"
+            (click)="openDialog(note)"
+            [disabled]="isUpdateButtonDisabled(note)"
+          >
             Update Note
           </button>
         </div>

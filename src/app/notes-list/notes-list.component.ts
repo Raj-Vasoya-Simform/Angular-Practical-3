@@ -11,6 +11,7 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class NotesListComponent implements OnInit {
   notes: Note[] = [];
+  disabledNotes: any[] = [];
 
   constructor(
     public noteService: NoteService,
@@ -46,5 +47,24 @@ export class NotesListComponent implements OnInit {
 
   deleteNote(note: any): void {
     this.noteService.deleteNote(note);
+  }
+
+  isDeleteButtonDisabled(note: any): boolean {
+    return this.disabledNotes.includes(note);
+  }
+
+  isUpdateButtonDisabled(note: any): boolean {
+    return this.disabledNotes.includes(note);
+  }
+
+  disableButtonsForNote(note: any): void {
+    this.disabledNotes.push(note);
+  }
+
+  enableButtonsForNote(note: any): void {
+    const index = this.disabledNotes.indexOf(note);
+    if (index !== -1) {
+      this.disabledNotes.splice(index, 1);
+    }
   }
 }
